@@ -6,6 +6,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -43,14 +45,47 @@ public class WorkshopDetailActivity extends AppCompatActivity {
 //                Snackbar.make(view, "Stex pti notificationi pahy lini", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
 
-
+//works for sure
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(WorkshopDetailActivity.this, "123")
-                        .setContentTitle("Barcamp Notification")
-                        .setContentText("You are interested in this worksohp")
+                        .setContentTitle("Barcamp Unconference")
+                        .setContentText("There is a workshop today, you are interested in")
                         .setSmallIcon(R.drawable.ic_launcher_background)
-                        .setTimeoutAfter(5000);
+                        .setTimeoutAfter(20000);
 
+                System.out.println("going to show the notification");
+//works for sure
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(WorkshopDetailActivity.this);
+                notificationManager.notify(123, builder.build());
+//works for sure
+
+              //new version
+//                NotificationCompat.Builder builder = new NotificationCompat.Builder(WorkshopDetailActivity.this, "123")
+//                        .setContentText("BARCAMP NOTIFICATION")
+//                        .setContentText("There is a cool workshop today!!!")
+//                        .setTimeoutAfter(10000)
+//                        .setSmallIcon(R.drawable.ic_launcher_background)
+//                       // .setLargeIcon(((BitmapDrawable) WorkshopDetailActivity.this.getResources().getDrawable(R.drawable.ic_launcher_background)).getBitmap())
+//                        .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+//
 //                Intent intent = new Intent(WorkshopDetailActivity.this, WorkshopDetailActivity.class);
+//                PendingIntent activity = PendingIntent.getActivity(WorkshopDetailActivity.this, 321, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+//                builder.setContentIntent(activity);
+//
+//                Notification notification = builder.build();
+//
+//                System.out.println("getting ready to show the notification");
+//
+//                Intent notificationIntent = new Intent(WorkshopDetailActivity.this, MyNotificationPublisher.class);
+//                notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION_ID, 321);
+//                notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION, notification);
+//                PendingIntent pendingIntent = PendingIntent.getBroadcast(WorkshopDetailActivity.this, 321, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+//                AlarmManager alarmManager = (AlarmManager) WorkshopDetailActivity.this.getSystemService(Context.ALARM_SERVICE);
+//                alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, 5000, pendingIntent);
+            }
+        });
+
+
+        //                Intent intent = new Intent(WorkshopDetailActivity.this, WorkshopDetailActivity.class);
 //                PendingIntent activity = PendingIntent.getActivity(WorkshopDetailActivity.this, 123, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 //
 //                Notification notification = builder.build();
@@ -62,13 +97,7 @@ public class WorkshopDetailActivity extends AppCompatActivity {
 //
 //                notificationManager.notify(123, notification);
 
-                System.out.println("going to show the notification");
 
-                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(WorkshopDetailActivity.this);
-                notificationManager.notify(123, builder.build());
-
-            }
-        });
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
