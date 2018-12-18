@@ -14,4 +14,6 @@
     </string>
     <string name="title_workshop_list">Workshops</string>
     <string name="title_workshop_detail">Workshop Detail</string>
+    <string name="channel_name">kanal</string>
+    <string name="channel_description">bacatrakan</string>
 </resources>

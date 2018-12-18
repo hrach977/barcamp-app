@@ -3,6 +3,8 @@ package com.example.barcamprefactored;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -343,6 +345,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                // finish();
+
+
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    CharSequence name = getString(R.string.channel_name);
+                    String description = getString(R.string.channel_description);
+                    int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                    NotificationChannel channel = new NotificationChannel("123", name, importance);
+                    channel.setDescription(description);
+                    NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                    notificationManager.createNotificationChannel(channel);
+                }
+
+
+
                 final List<DummyContent.Workshop> events = new ArrayList<>();
 
                 Retrofit retrofit = new Retrofit.Builder()

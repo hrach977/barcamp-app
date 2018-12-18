@@ -1,15 +1,24 @@
 package com.example.barcamprefactored;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+
+import com.example.barcamprefactored.dummy.DummyContent;
 
 /**
  * An activity representing a single Workshop detail screen. This
@@ -31,8 +40,33 @@ public class WorkshopDetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Stex pti notificationi pahy lini", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Stex pti notificationi pahy lini", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(WorkshopDetailActivity.this, "123")
+                        .setContentTitle("Barcamp Notification")
+                        .setContentText("You are interested in this worksohp")
+                        .setSmallIcon(R.drawable.ic_launcher_background)
+                        .setTimeoutAfter(5000);
+
+//                Intent intent = new Intent(WorkshopDetailActivity.this, WorkshopDetailActivity.class);
+//                PendingIntent activity = PendingIntent.getActivity(WorkshopDetailActivity.this, 123, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+//
+//                Notification notification = builder.build();
+//
+//                AlarmManager alarmManager = (AlarmManager) WorkshopDetailActivity.this.getSystemService(Context.ALARM_SERVICE);
+//                //alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, 1000);
+//
+//                NotificationManager notificationManager = (NotificationManager) WorkshopDetailActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
+//
+//                notificationManager.notify(123, notification);
+
+                System.out.println("going to show the notification");
+
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(WorkshopDetailActivity.this);
+                notificationManager.notify(123, builder.build());
+
             }
         });
 
